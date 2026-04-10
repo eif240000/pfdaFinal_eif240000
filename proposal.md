@@ -11,7 +11,7 @@ remove the tedium of manually importing and connecting nodes.
 ## Features
 - Feature 1
 	- The ability to read and import the correct maps. I could use a for loop with
-  elif, else, and if statements to find or ommit maps that aren't found.
+  elif, else, and if statements to find or omit maps that aren't found.
 - Feature 2
 	- The ability to send out a warning messages using try/except strings for 
   any maps that are missing.
@@ -19,7 +19,7 @@ remove the tedium of manually importing and connecting nodes.
 ## Challenges
 - Learning Maya's commands necessary for texturing.
 - Learning how to make Maya connect, delete, and create nodes.
-- Making sure that Maya connect the correct maps to the correct channels.
+- Making sure that Maya connects the correct maps to the correct channels.
 
 ## Outcomes
 Ideal Outcome:
@@ -41,7 +41,7 @@ the correct channel.
   3. Implement the ability for the program to find and read the correct maps.
 
 - Week 2
-  1. The program should be able import maps based on their naming convention.
+  1. The program should be able to import maps based on their naming convention.
   2. Attempt to create nodes using Python.
 
 - Week 3 
