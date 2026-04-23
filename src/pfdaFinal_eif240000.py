@@ -1,7 +1,7 @@
 import maya.cmds as cmds
 import os
 
-def dialog():
+def dialogBox():
     shaderName = cmds.promptDialog(
 		title='Specify Shader Name',
 		button=['OK', 'Cancel'],
@@ -13,15 +13,18 @@ def dialog():
         userInput = cmds.promptDialog(query=True, text=True)
         return userInput
     else:
-        return None
-
+        cmds.warning("Operation cancelled.")
+ 
 def createAiStand(name):
     createShader = cmds.shadingNode('aiStandardSurface', asShader=True, name=name)
     return createShader
 
 def main():
-    customName = dialog()
+    customName = dialogBox()
+    if not customName:
+        return None
     createShader = createAiStand(customName)
+
     
 if __name__ == "__main__":
     main()
