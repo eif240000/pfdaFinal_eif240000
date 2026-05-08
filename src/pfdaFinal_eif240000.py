@@ -12,6 +12,7 @@ def find_diffuse(path):
     
     for file in os.listdir(path):
         lower = file.lower()
+        
         for name in diffuse_names:
             if name in lower:
                 return os.path.join(path, file)
@@ -40,6 +41,7 @@ def create_nodes(name, diffuse_path):
     cmds.connectAttr(place_2d + ".outUV", diffuse_tex + ".uvCoord")
     cmds.connectAttr(place_2d + ".outUvFilterSize", diffuse_tex + ".uvFilterSize")
     cmds.connectAttr(diffuse_tex + ".outColor", shader + ".baseColor")
+    
     return shader
 
 def main():
@@ -50,6 +52,9 @@ def main():
    if not custom_path:
        return None
    user_diffuse = find_diffuse(custom_path)
+   if not user_diffuse:
+    cmds.error("No diffuse texture found")
+    return None
    create_nodes(custom_name, user_diffuse)
 
     
