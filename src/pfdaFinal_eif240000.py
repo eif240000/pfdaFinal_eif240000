@@ -57,11 +57,22 @@ def create_nodes(name, diffuse_path, roughness_path, metalness_path, normal_path
     metal_tex = cmds.shadingNode('file', asTexture=True, name="metal_TEX")
     normal_tex = cmds.shadingNode('file', asTexture=True, name="normal_TEX")
     
-    
-    cmds.setAttr(diffuse_tex + ".fileTextureName", diffuse_path, type="string")
-    cmds.setAttr(normal_tex + ".fileTextureName", normal_path, type="string")
-    cmds.setAttr(roughness_tex + ".fileTextureName", roughness_path, type="string")
-    cmds.setAttr(metal_tex + ".fileTextureName", metalness_path, type="string")
+    if diffuse_path:    
+        cmds.setAttr(diffuse_tex + ".fileTextureName", diffuse_path, type="string")
+    else:
+        cmds.warning("No diffuse texture found.")
+    if normal_path:
+        cmds.setAttr(normal_tex + ".fileTextureName", normal_path, type="string")
+    else:
+        cmds.warning("No diffuse texture found.")
+    if roughness_path:
+        cmds.setAttr(roughness_tex + ".fileTextureName", roughness_path, type="string")
+    else:
+        cmds.warning("No roughness texture found.")
+    if metalness_path:
+        cmds.setAttr(metal_tex + ".fileTextureName", metalness_path, type="string")
+    else:
+        cmds.warning("No metalness texture found.")
     
     cmds.connectAttr(place_2d + ".outUV", diffuse_tex + ".uvCoord")
     cmds.connectAttr(place_2d + ".outUvFilterSize", diffuse_tex + ".uvFilterSize")
